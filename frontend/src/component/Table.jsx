@@ -16,6 +16,7 @@ const Table =  () => {
     useEffect(()=>{
         axios.get(`http://192.168.100.66:5500/get`).then((res)=>{
             setData(res.data.data)
+            console.log(res.data.data)
         })
     },[])
 
@@ -93,6 +94,9 @@ const Table =  () => {
                             Full Name
                         </th>
                         <th scope="col" className="py-3 px-6">
+                            Password
+                        </th>
+                        <th scope="col" className="py-3 px-6">
                             City
                         </th>
                         <th scope="col" className="py-3 px-6">
@@ -104,7 +108,8 @@ const Table =  () => {
                     </tr>
                 </thead>
 
-            {data.map((x)=> <TableBody  data={x}/>)}
+
+            {data?data.map((x)=> <TableBody  data={x}/>):''}
         </table>
         </div>
     <Pagination/>

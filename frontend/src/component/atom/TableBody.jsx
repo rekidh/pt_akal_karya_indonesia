@@ -15,6 +15,9 @@ export default function TableBody(props) {
                         </td>
 
                         <td className="py-4 px-6">
+                            {props.data.password}
+                        </td>
+                        <td className="py-4 px-6">
                             {props.data.city}
                         </td>
                             

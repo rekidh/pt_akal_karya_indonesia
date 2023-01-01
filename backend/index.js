@@ -2,7 +2,8 @@
 // import express
 const express = require('express');
 const app = express();
-const PORT = 5500;
+require('dotenv').config();
+const PORT = process.env.PORT;
 //cors 
 // ini cukup penting karna tanpa ada nya dependeci ini kamu akan terkena cosr error
 const cosr = require('cors')

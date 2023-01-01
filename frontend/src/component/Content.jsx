@@ -61,6 +61,7 @@ export default function Content() {
       }
     axios.post(`http://192.168.100.66:5500/post`,data).then((response) => {
         console.log(response)
+        window.location.reload()
 
       });
   };

@@ -1,15 +1,15 @@
 const dbConn = require('../Config/Connection.db')
-const { search } = require('../Routes/Auth')
+const bcrypt  =require('bcryptjs')
 const ApiFormater = require('./Helper/ApiFormater')
 
 module.exports = { 
    //ok 
    create:async (req,res,next)=>{
-         const data=[req.body.user_name,req.body.password,req.body.full_name,req.body.city,req.body.status]
+      const hash = await bcrypt.hashSync(req.body.password, 8)
+         const data=[req.body.user_name,hash,req.body.full_name,req.body.city,req.body.status]
             const sqlquery = `INSERT INTO data_users (user_name,password,full_name,city,status) VALUES (?,?,?,?,?)`
             await  dbConn.query(sqlquery,data, async (err,rows)=>{
                try {
-                  console.log(rows)
                res.send(new ApiFormater(200,"ok",rows))
             } catch (error) {
                   res.send(new ApiFormater(200,"error",err))
@@ -20,7 +20,7 @@ module.exports = {
    //ok
    read:async (req,res,next)=>{
          
-         const sqlquery = `SELECT * FROM data_users `
+         const sqlquery = `SELECT * FROM data_users  ` // pagination LIMIT 100 OFFSET 3
 
          await dbConn.query(sqlquery,(err,rows)=>{
                try {
