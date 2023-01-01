@@ -10,6 +10,7 @@ DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=
 DB_DATABASES=pt_akasia
+PORT=5500
 
 //untuk table  di antaranya ada table
 * users =>menyimpan informasi login user
