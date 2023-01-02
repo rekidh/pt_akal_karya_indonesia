@@ -32,7 +32,7 @@ const Login = () => {
 
   const handleClick = async () => {
 
-      await   axios.post(`http://192.168.100.66:5500/login`, {userName,password}).then((res) => {
+      await   axios.post(`http://localhost:5500/login`, {userName,password}).then((res) => {
          console.log(res.data)
          if(res.data.code===400){
             setMessage(res.data.messages)

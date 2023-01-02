@@ -14,7 +14,7 @@ const Table =  () => {
     const [status,setStatus]=useState(false)
 
     useEffect(()=>{
-        axios.get(`http://192.168.100.66:5500/get`).then((res)=>{
+        axios.get(`http://localhost:5500/get`).then((res)=>{
             setData(res.data.data)
             console.log(res.data.data)
         })
@@ -31,7 +31,7 @@ const Table =  () => {
         })
         console.log(filter1)
 
-        axios.get(`http://192.168.100.66:5500/search?user_name=${e.target.value}`).then((res)=>{
+        axios.get(`http://localhost:5500/search?user_name=${e.target.value}`).then((res)=>{
             setData(res.data.data)
         })
     }

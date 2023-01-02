@@ -32,7 +32,7 @@ const Register = () => {
   };
 
   const handleClick = () => {
-    axios.post(`http://192.168.100.66:5500/register`, {name,userName,password}).then((response) => {
+    axios.post(`http://localhost:5500/register`, {name,userName,password}).then((response) => {
         console.log(response)
         if(response.status===200){
          setStatus(true)

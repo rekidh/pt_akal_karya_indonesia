@@ -17,10 +17,10 @@ const Home = (prop) => {
             return (
                <div className='overflow-hidden'>
                   <Nav/>
-                  <div className="body bg-stone-300">
-                     <div className="flex ">
+                  <div className="body bg-stone-300 ">
+                     <div className="flex  ">
                         <Sidebar/>
-                        <div className="content w-[90%]  backdrop-blur-sm bg-white/30 relative ">
+                        <div className="content w-[100%]  overflow-hidden backdrop-blur-sm bg-white/30 relative ">
                            <Content/>
                            <Table/>
                         </div>

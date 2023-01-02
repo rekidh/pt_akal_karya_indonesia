@@ -59,7 +59,7 @@ export default function Content() {
          city,
          status
       }
-    axios.post(`http://192.168.100.66:5500/post`,data).then((response) => {
+    axios.post(`http://localhost:5500/post`,data).then((response) => {
         console.log(response)
         window.location.reload()
 
@@ -68,9 +68,12 @@ export default function Content() {
 
   return (
       <div className=''>
-         <div className="mt-4 flex justify-between bg-gray-300 mx-10 ">
-            <h2 className='font-semibold text-2xl '>Dashboard</h2>
+         <div className=" rounded-lg  bg-white text-white dark:bg-gray-800 mx-9 ">
+            <div className="mx-5 flex justify-between m-4 ">
+
+            <h2 className='font-semibold text-2xl  '>Dashboard</h2>
             <p>Lorem, ipsum.</p>
+            </div>
          </div>
          <div className="item-add  flex flex-row justify-between  mt-5">
  
