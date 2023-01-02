@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import axios from 'axios'
 import Button from '../Button'
-import Toast from '../atom/Toast'
 import Swal from 'sweetalert2'
 
 
@@ -10,10 +9,36 @@ export default function TableBody(props) {
     const handleDeleted = (e)=>{
         axios.delete(`http://localhost:5500/delete?id=${props.data.id}`).then((res)=>{
             Swal.fire({
+                icon: 'warning',
+                title: `delete this ${props.data.full_name}`,
+                }).then((e)=>{              
+                    window.location.reload()
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
+        })
+    }
+    const handleUpdate = (e)=>{
+        // axios.delete(`http://localhost:5500/delete?id=${props.data.id}`).then((res)=>{
+            Swal.fire({
                 icon: 'error',
                 title: `delete this ${props.data.full_name}`,
-                }).then((e)=>{window.location.reload()})
-        })
+                }).then((e)=>{
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    window.location.reload()
+                })
+        // })
     }
 
   return (
@@ -45,6 +70,7 @@ export default function TableBody(props) {
 
                         <td className="py-4 px-6">
                             <Button func={handleDeleted} name="Delete"/>
+                            <Button func={(e)=>console.log(e)} name="Update"/>
                         </td>
                     </tr>
                 </tbody>

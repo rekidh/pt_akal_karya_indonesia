@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import Input from './Input';
 import Button from './Button'
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 
 export default function Content() {
@@ -61,8 +62,13 @@ export default function Content() {
       }
     axios.post(`http://localhost:5500/post`,data).then((response) => {
         console.log(response)
-        window.location.reload()
-
+         Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+            }).then((e)=>window.location.reload())
       });
   };
 

@@ -31,8 +31,8 @@ module.exports = {
          })
       },
    update: async(req,res,next)=>{
-      const hash = await bcrypt.hashSync(req.body.password, 8)
-      const sqlquery = `UPDATE INTO data_users (name,user_name,password) VALUES (?,?,?)`
+      console.log(Object.keys( req.query) )
+      const sqlquery = `UPDATE data_users (name,user_name,password) VALUES (?,?,?)`
       await  dbConn.query(sqlquery,[req.body.name,req.body.userName,hash], async(err,rows)=>{
          try {
          await   !err?res.send(new ApiFormater(200,'affected',rows)):res.send(new ApiFormater(502,'error',))
@@ -41,10 +41,8 @@ module.exports = {
          }
       })
    },
+   //ok
    delete: async(req,res,next)=>{
-      console.log(Object.keys( req.query) )
-      // const hash = await bcrypt.hashSync(req.body.password, 8)
-
       const sqlquery = `DELETE FROM data_users WHERE ${Object.keys(req.query)} = ${Object.values(req.query)}`
       await  dbConn.query(sqlquery, async(err,rows)=>{
          try {
